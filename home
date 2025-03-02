@@ -1,0 +1,64 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+
+const HomePage: React.FC = () => {
+  return (
+    <>
+      {/* Hero Section */}
+      <div className="container mx-auto px-4 py-20 flex flex-col items-center justify-center text-center">
+        <h1 className="font-cursive text-5xl md:text-7xl text-gold mb-6 leading-tight text-shadow-lg">
+          Welcome to Crème de la Cake
+        </h1>
+        <p className="text-cream text-xl md:text-2xl mb-8 font-light max-w-3xl">
+          Bringing you the finest handcrafted cakes with love and elegance.
+        </p>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <Link to="/menu" className="bg-gold hover:bg-gold/80 text-deep-purple font-bold py-3 px-6 rounded-full transition-all transform hover:scale-105 shadow-lg">
+            View Our Menu
+          </Link>
+          <Link to="/order" className="bg-transparent hover:bg-cream/10 text-cream border-2 border-cream font-bold py-3 px-6 rounded-full transition-all transform hover:scale-105 shadow-lg">
+            Order Now
+          </Link>
+        </div>
+      </div>
+
+      {/* Featured Cakes Preview */}
+      <div className="container mx-auto px-4 py-16">
+        <h2 className="font-cursive text-4xl text-gold text-center mb-12">Our Signature Creations</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {[
+            {
+              title: "Passion Fruit Coconut Cream",
+              image: "https://www.piesandtacos.com/wp-content/uploads/2023/06/passionfruit-cake-13-scaled.jpg",
+              description: "Tropical passion fruit with creamy coconut layers"
+            },
+            {
+              title: "Bento Cakes",
+              image: "https://static.wixstatic.com/media/80d19a_4202d45ed8f845669c1ac009fb1a3d2b~mv2.jpg/v1/fill/w_480,h_438,al_c,lg_1,q_80,enc_avif,quality_auto/80d19a_4202d45ed8f845669c1ac009fb1a3d2b~mv2.jpg",
+              description: "Miniature artistic cakes perfect for gifting"
+            },
+            {
+              title: "Fresh Strawberry Chocolate",
+              image: "https://shreemsweetsandbakery.com/wp-content/uploads/2021/04/Strawberry-Topped-Chocolate-Cake-600x600.jpg",
+              description: "Rich chocolate cake topped with fresh strawberries"
+            }
+          ].map((cake, index) => (
+            <div key={index} className="bg-deep-purple/70 rounded-lg overflow-hidden shadow-xl border border-gold/20 transform transition-all hover:scale-105">
+              <img 
+                src={cake.image} 
+                alt={cake.title} 
+                className="w-full h-48 object-cover"
+              />
+              <div className="p-6">
+                <h3 className="font-cursive text-2xl text-gold mb-2">{cake.title}</h3>
+                <p className="text-cream">{cake.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default HomePage;
